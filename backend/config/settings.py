@@ -88,19 +88,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'notesdb',
         'USER': 'notesuser',
         'PASSWORD': '12345',
         'HOST': 'db',         
         'PORT': '5432',
+=======
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+>>>>>>> dae699b226abef9d28c9905204d3c1f700a33ce1
     }
 }
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> dae699b226abef9d28c9905204d3c1f700a33ce1
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
