@@ -1,0 +1,21 @@
+# Ignore environment file
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django SQLite (if ever used)
+*.sqlite3
+
+# VSCode / IDE settings
+.vscode/
+.idea/
+
+# Migrations (optional)
+**/migrations/
+
+# Docker
+*.log
