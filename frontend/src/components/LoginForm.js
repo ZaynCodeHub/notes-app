@@ -13,9 +13,10 @@ function Login({ onLogin }) {
  const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:8000/api/auth/login/', credentials);
-    localStorage.setItem('access', res.data.access);
-    localStorage.setItem('refresh', res.data.refresh);
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login/`, credentials);
+      localStorage.setItem('access', res.data.access);
+      localStorage.setItem('refresh', res.data.refresh);
+
     onLogin({ 
       access: res.data.access, 
       refresh: res.data.refresh, 

@@ -16,8 +16,8 @@ services:
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile  
     container_name: notes_backend
-    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
     ports:
@@ -25,11 +25,12 @@ services:
     depends_on:
       - db
     env_file:
-    - ./backend/.env
+      - ./backend/.env
 
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile 
     container_name: notes_frontend
     volumes:
       - ./frontend:/app
@@ -37,6 +38,20 @@ services:
       - "3000:3000"
     stdin_open: true
     tty: true
+    env_file:
+      - ./frontend/.env
+
+  nginx:
+    image: nginx:latest
+    container_name: notes_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend/build:/usr/share/nginx/html:ro
+    depends_on:
+      - frontend
+      - backend
 
 volumes:
   postgres_data:

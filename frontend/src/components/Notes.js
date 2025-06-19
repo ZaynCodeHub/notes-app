@@ -12,11 +12,12 @@ const toggleDropdown = () => setShowDropdown((prev) => !prev);
   useEffect(() => {
     if (!token) return;
 
-    axios
-      .get("http://localhost:8000/api/notes/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+  axios
+  .get(`${process.env.REACT_APP_API_URL}/notes/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+
       })
       .then((res) => {
         console.log("Fetched notes:", res.data); //  DEBUG
